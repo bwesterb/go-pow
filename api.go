@@ -44,7 +44,7 @@ func NewRequest(difficulty uint32, nonce []byte) string {
 	return string(s)
 }
 
-func (proof *Proof) MarshalText() ([]byte, error) {
+func (proof Proof) MarshalText() ([]byte, error) {
 	return []byte(base64.RawStdEncoding.EncodeToString(proof.buf)), nil
 }
 
@@ -54,7 +54,7 @@ func (proof *Proof) UnmarshalText(buf []byte) error {
 	return err
 }
 
-func (req *Request) MarshalText() ([]byte, error) {
+func (req Request) MarshalText() ([]byte, error) {
 	return []byte(fmt.Sprintf("%s-%d-%s",
 		req.Alg,
 		req.Difficulty,
