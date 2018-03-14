@@ -17,7 +17,7 @@ The client fulfils the proof of work by running `pow.Fulfil`:
 proof, _ := pow.Fulfil(req, []byte("some bound data"))
 ```
 
-The client returns the proof (in this case  `AAAAAAAAAAMAAAAAAAAABAAAAAAAAAAI`)
+The client returns the proof (in this case  `AAAAAAAAAAMAAAAAAAAADgAAAAAAAAAb`)
 to the server, which can check it is indeed a valid proof of work, by running:
 
 
