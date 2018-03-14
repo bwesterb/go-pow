@@ -23,19 +23,19 @@ func checkSha2BDay(proof []byte, nonce, data []byte, diff uint32) bool {
 	h.Write(data)
 	h.Write(nonce)
 	h.Sum(resBuf[:0])
-	res1 := binary.BigEndian.Uint64(resBuf) % ((1 << diff) - 1)
+	res1 := binary.BigEndian.Uint64(resBuf) & ((1 << diff) - 1)
 	h.Reset()
 	h.Write(prefix2)
 	h.Write(data)
 	h.Write(nonce)
 	h.Sum(resBuf[:0])
-	res2 := binary.BigEndian.Uint64(resBuf) % ((1 << diff) - 1)
+	res2 := binary.BigEndian.Uint64(resBuf) & ((1 << diff) - 1)
 	h.Reset()
 	h.Write(prefix3)
 	h.Write(data)
 	h.Write(nonce)
 	h.Sum(resBuf[:0])
-	res3 := binary.BigEndian.Uint64(resBuf) % ((1 << diff) - 1)
+	res3 := binary.BigEndian.Uint64(resBuf) & ((1 << diff) - 1)
 	return res1 == res2 && res2 == res3
 }
 
@@ -57,7 +57,7 @@ func fulfilSha2BDay(nonce []byte, diff uint32, data []byte) []byte {
 		h.Write(data)
 		h.Write(nonce)
 		h.Sum(resBuf[:0])
-		res := binary.BigEndian.Uint64(resBuf) % ((1 << diff) - 1)
+		res := binary.BigEndian.Uint64(resBuf) & ((1 << diff) - 1)
 		pair, ok := lut[res]
 		if ok {
 			if pair.Second != 0 {

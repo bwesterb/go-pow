@@ -19,6 +19,6 @@ func Example() {
 	fmt.Printf("check: %v", ok)
 
 	// Output: req:   sha2bday-5-c29tZSByYW5kb20gbm9uY2U
-	// proof: AAAAAAAAAAMAAAAAAAAABAAAAAAAAAAI
+	// proof: AAAAAAAAAAMAAAAAAAAADgAAAAAAAAAb
 	// check: true
 }
